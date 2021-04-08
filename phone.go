@@ -10,9 +10,9 @@ func ( self Message )Text( ) error {
 	var err error
 	var smstext string
 
-	// TextNow Configs
-	const apiurl string = "https://www.textnow.com/api/users/z_hbbq5zru9cxs7jhwih/messages"
-	const cookie string = "connect.sid=s%3AYiagnsn5ON3035O732nLkjFN3BSqCQnT.Y%2FwnOdHUO%2FmM3uiHXZBErfWgg%2BCE3Dg8TNwOc97vMnM;"
+	// TextNow Configs FIXME dont hard-code
+	const apiurl string = "https://www.textnow.com/api/users/yuh1ilp_ugwncpimtcjh/messages"
+	const cookie string = "connect.sid=s:MYNJ16gBIZJXc0FWXlTY3p-2k2Tw1odW.qYUDZ6Qx4PN27GkyLxwT+3g+EheG0RuwphT5Qs1e0Kc;"
 
 	// Build message
 	smstext = strings.Join( [ ]string{ self.About , self.Content , self.Link } , " " )
