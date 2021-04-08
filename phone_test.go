@@ -6,7 +6,7 @@ import "testing"
 func TestPhone( test * testing.T ) {
 	var err error
 	var message Message
-	message.Receive = "(872) 903-1636"
+	message.Receive = "+1 (989) 807-9971"
 	message.About = "Test2"
 	message.Content = "here is some content"
 	message.Link = "https://akona.me"
