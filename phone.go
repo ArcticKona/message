@@ -4,15 +4,18 @@ import "io/ioutil"
 import "net/http"
 import "net/url"
 import "strings"
+import "os"
 
 // Sends out messages with TextNow. Probably illegal.
 func ( self Message )Text( ) error {
 	var err error
 	var smstext string
 
-	// TextNow Configs FIXME dont hard-code
-	const apiurl string = "https://www.textnow.com/api/users/yuh1ilp_ugwncpimtcjh/messages"
-	const cookie string = "connect.sid=s:MYNJ16gBIZJXc0FWXlTY3p-2k2Tw1odW.qYUDZ6Qx4PN27GkyLxwT+3g+EheG0RuwphT5Qs1e0Kc;"
+	// TextNow Configs
+	var apiurl string = ternary( os.Getenv( "AKONA_TEXTNOW_APIURL" ) != "" , os.Getenv( "AKONA_TEXTNOW_APIURL" ) ,
+		"https://www.textnow.com/api/users/yuh1ilp_ugwncpimtcjh/messages" ).( string )
+	var cookie string = ternary( os.Getenv( "AKONA_TEXTNOW_COOKIE" ) != "" , os.Getenv( "AKONA_TEXTNOW_COOKIE" ) ,
+		"connect.sid=s:MYNJ16gBIZJXc0FWXlTY3p-2k2Tw1odW.qYUDZ6Qx4PN27GkyLxwT+3g+EheG0RuwphT5Qs1e0Kc;" ).( string )
 
 	// Build message
 	smstext = strings.Join( [ ]string{ self.About , self.Content , self.Link } , " " )

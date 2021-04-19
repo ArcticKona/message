@@ -12,7 +12,8 @@ func ( self Message )Email( ) error {
 	var sendhtml string
 
 	// Keep this secret
-	const secret = "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"
+	var secret string = ternary( os.Getenv( "AKONA_SENDGRID_SECRET" ) != "" , os.Getenv( "AKONA_SENDGRID_SECRET" ) ,
+		"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" ).( string )
 
 	// Operate templates
 	sendtext = self.Content + " " + self.Link
