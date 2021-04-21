@@ -1,4 +1,3 @@
-// Sends emails
 package message
 import "github.com/sendgrid/sendgrid-go"
 import "github.com/sendgrid/sendgrid-go/helpers/mail"
@@ -6,14 +5,15 @@ import "io/ioutil"
 import "strings"
 import "os"
 
+// Keep this secret
+var EmailSecret string = ternary( os.Getenv( "AKONA_SENDGRID_SECRET" ) != "" , os.Getenv( "AKONA_SENDGRID_SECRET" ) ,
+	"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" ).( string )
+
+// Sends emails
 func ( self Message )Email( ) error {
 	var err error
 	var sendtext string
 	var sendhtml string
-
-	// Keep this secret
-	var secret string = ternary( os.Getenv( "AKONA_SENDGRID_SECRET" ) != "" , os.Getenv( "AKONA_SENDGRID_SECRET" ) ,
-		"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" ).( string )
 
 	// Operate templates
 	sendtext = self.Content + " " + self.Link
@@ -27,7 +27,7 @@ func ( self Message )Email( ) error {
 	from := mail.NewEmail( "akona" , "noreply@akona.me" )
 	to := mail.NewEmail( "" , self.Receive )
 	email := mail.NewSingleEmail( from , self.About , to , sendtext , sendhtml )
-	client := sendgrid.NewSendClient( secret )
+	client := sendgrid.NewSendClient( EmailSecret )
 	_ , err = client.Send( email )
 
 	return err
