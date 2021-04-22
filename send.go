@@ -1,7 +1,7 @@
 package message
 
 func ( self Message )Send( ) [ ]error {
-	var err error = [ ]error{ nil , nil }
+	var err [ ]error = [ ]error{ nil , nil }
 	err[ 0 ] = self.Text( )
 	err[ 1 ] = self.Email( )
 	for _ , err := range err {
@@ -9,5 +9,3 @@ func ( self Message )Send( ) [ ]error {
 			return [ ]error{ } } }
 	return err
 }
-
-
