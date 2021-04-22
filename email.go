@@ -1,7 +1,7 @@
 package message
 import "github.com/sendgrid/sendgrid-go"
 import "github.com/sendgrid/sendgrid-go/helpers/mail"
-import "io/ioutil"
+//import "io/ioutil"
 import "strings"
 import "os"
 
