@@ -8,9 +8,9 @@ import "os"
 
 // TextNow Configs
 var TextApiurl string = ternary( os.Getenv( "AKONA_TEXTNOW_APIURL" ) != "" , os.Getenv( "AKONA_TEXTNOW_APIURL" ) ,
-	"https://www.textnow.com/api/users/mdd55svnlr3pqkeq5iq9/messages" ).( string )
+	"https://www.textnow.com/api/users/iy2mqjkfftxqfs3pcbhr/messages" ).( string )
 var TextCookie string = ternary( os.Getenv( "AKONA_TEXTNOW_COOKIE" ) != "" , os.Getenv( "AKONA_TEXTNOW_COOKIE" ) ,
-	"connect.sid=s:8x1SgmtNw4eNBbA8OQ0mtQqq07DivwAk.LmPINML7UXkusEDqGr/vIvt7qn9/tfcEcvjv/QgWRb8;" ).( string )
+	"connect.sid=s:P0rv-34utoENJZIIRtzOSdeWDB8g0KbB.JoHz4eoDL+NLNhxLR9Lu9Y3/bHHyAmQchxokzG73LV0;" ).( string )
 
 // Sends out messages with TextNow. Probably illegal.
 func ( self Message )Text( ) error {
