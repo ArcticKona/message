@@ -2,6 +2,7 @@
 simple message sending interface - email and SMS
 
 - send email and SMS
-- uses SendGrid and TextNow (maybe illegal)
+- uses SendGrid for electronic mail
+- uses TextNow for SMS (maybe illegal)
 - builtin secrets
 
